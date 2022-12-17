@@ -19,16 +19,21 @@ target_precompile_headers(${PROJECT_NAME} PRIVATE PCH.h) # <--- PCH.h is require
 
 # When your SKSE .dll is compiled, this will automatically copy the .dll into your mods folder.
 # Only works if you configure DEPLOY_ROOT above (or set the SKYRIM_MODS_FOLDER environment variable)
+# A .pdb file is also copied when the build configuration is set to Debug
 if(EXISTS "${DEPLOY_ROOT}")
     set(MOD_FOLDER "${DEPLOY_ROOT}/${PROJECT_NAME}")
     set(DLL_FOLDER "${MOD_FOLDER}/SKSE/Plugins")
     message(STATUS "Plugin output directory: ${MOD_FOLDER}")
-    add_custom_command(
-        TARGET "${PROJECT_NAME}"
-        POST_BUILD
+    add_custom_command(TARGET "${PROJECT_NAME}" POST_BUILD
         COMMAND "${CMAKE_COMMAND}" -E make_directory    "${DLL_FOLDER}"
         COMMAND "${CMAKE_COMMAND}" -E copy_if_different "$<TARGET_FILE:${PROJECT_NAME}>"     "${DLL_FOLDER}/$<TARGET_FILE_NAME:${PROJECT_NAME}>"
-        COMMAND "${CMAKE_COMMAND}" -E copy_if_different "$<TARGET_PDB_FILE:${PROJECT_NAME}>" "${DLL_FOLDER}/$<TARGET_PDB_FILE_NAME:${PROJECT_NAME}>"
         VERBATIM
     )
+    string(TOLOWER "${CMAKE_BUILD_TYPE}" build_type)
+    if(build_type STREQUAL debug)
+        add_custom_command(TARGET "${PROJECT_NAME}" POST_BUILD
+            COMMAND "${CMAKE_COMMAND}" -E copy_if_different "$<TARGET_PDB_FILE:${PROJECT_NAME}>" "${DLL_FOLDER}/$<TARGET_PDB_FILE_NAME:${PROJECT_NAME}>"
+            VERBATIM
+        )
+    endif()
 endif()
