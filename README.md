@@ -5,7 +5,7 @@
     href="https://github.com/SkyrimScripting/StartupScript/releases/download/0.0.1/StartupScript.7z">
     <img
         alt="Download Skyrim Game Start Script SKSE Plugin - Install in your Mod Manager"
-        src="https://github.com/SkyrimScripting/Download/raw/main/DownloadButton_256.png"
+        src="https://raw.githubusercontent.com/SkyrimScripting/Download/main/DownloadButton_256.png"
         width="100"
         />
 </a>
