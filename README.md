@@ -1,6 +1,14 @@
 # Skyrim Game Start Script
 
-<a href="https://github.com/SkyrimScripting/StartupScript/releases/download/0.0.1/StartupScript.7z"><img alt="Download Skyrim Game Start Script SKSE Plugin - Install in your Mod Manager" src="https://github.com/SkyrimScripting/Download/blob/main/DownloadButton_256.png?raw=true" width="100"></a>
+<a 
+    title="Download Skyrim Game Start Script SKSE Plugin - Install in your Mod Manager"
+    href="https://github.com/SkyrimScripting/StartupScript/releases/download/0.0.1/StartupScript.7z">
+    <img
+        alt="Download Skyrim Game Start Script SKSE Plugin - Install in your Mod Manager"
+        src="https://github.com/SkyrimScripting/Download/raw/main/DownloadButton_256.png"
+        width="100"
+        />
+</a>
 
 > Run a script whenever the Main Menu loads
 >
